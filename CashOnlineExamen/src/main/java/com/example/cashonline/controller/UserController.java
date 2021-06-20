@@ -1,8 +1,11 @@
 package com.example.cashonline.controller;
 
+import com.example.cashonline.model.Loan;
 import com.example.cashonline.model.User;
+import com.example.cashonline.service.LoanService;
 import com.example.cashonline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LoanService loanService;
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers(){
@@ -37,6 +43,7 @@ public class UserController {
 
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Long id){
+        loanService.deleteLoanByUserId(id);
         userService.deleteUserById(id);
         return  ResponseEntity.ok(null);
     }

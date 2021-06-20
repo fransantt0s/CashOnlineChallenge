@@ -13,12 +13,21 @@ public class Loan implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_loan")
     private Long id;
+    private Integer total;
 
+    @Column(name="id_user")
+    private Long idUser;
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
 
     public Loan() {
     }
-
-    private Integer total;
 
     public Loan(Long id, Integer total) {
         this.id = id;

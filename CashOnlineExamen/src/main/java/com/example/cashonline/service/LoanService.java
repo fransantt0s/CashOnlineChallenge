@@ -12,5 +12,6 @@ public interface LoanService {
     Loan getLoanById(Long id);
     void deleteLoanById(Long id);
     Loan saveLoan(Loan loan);
+    void deleteLoanByUserId(Long userId);
 
 }

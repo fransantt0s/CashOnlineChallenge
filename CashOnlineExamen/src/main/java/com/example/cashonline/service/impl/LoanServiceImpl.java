@@ -52,5 +52,14 @@ public class LoanServiceImpl implements LoanService {
 
     }
 
+    public void deleteLoanByUserId(Long userid){
+        List <Loan> loans = loanDao.findAll();
+        for (Loan loan:loans){
+            if(loan.getIdUser() == userid){
+                loanDao.delete(loan);
+            }
+        }
+    }
+
 
 }
